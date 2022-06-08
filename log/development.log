@@ -35745,3 +35745,245 @@ Processing by ActiveStorage::DiskController#show as JPEG
 Completed 200 OK in 1ms (ActiveRecord: 0.0ms | Allocations: 291)
 
 
+Started GET "/books" for 58.12.47.1 at 2022-06-08 17:09:08 +0000
+Cannot render console from 58.12.47.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by BooksController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering books/index.html.erb within layouts/application
+  Rendered books/_info.html.erb (Duration: 0.6ms | Allocations: 270)
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 3], ["record_type", "User"], ["name", "profile_image"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:16:in `get_profile_image'
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/models/user.rb:20:in `get_profile_image'
+  [1m[36mActiveStorage::VariantRecord Load (0.1ms)[0m  [1m[34mSELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = ? AND "active_storage_variant_records"."variation_digest" = ? LIMIT ?[0m  [["blob_id", 28], ["variation_digest", "58nLvjR5lLpeOdoWw8+s844W40I="], ["LIMIT", 1]]
+  ↳ app/models/user.rb:20:in `get_profile_image'
+  Rendered books/_side.html.erb (Duration: 49.2ms | Allocations: 26890)
+  [1m[36mBook Load (0.2ms)[0m  [1m[34mSELECT "books".* FROM "books"[0m
+  ↳ app/views/books/index.html.erb:19
+  [1m[36mActiveStorage::VariantRecord Load (0.1ms)[0m  [1m[34mSELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = ? AND "active_storage_variant_records"."variation_digest" = ? LIMIT ?[0m  [["blob_id", 28], ["variation_digest", "0Lmu9T0kDFUJplmg7S9DaSDDTiw="], ["LIMIT", 1]]
+  ↳ app/models/user.rb:20:in `get_profile_image'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/books/index.html.erb:21
+  [1m[36mFavorite Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "favorites" WHERE "favorites"."book_id" IS NULL AND (1=0) AND "favorites"."user_id" = ? LIMIT ?[0m  [["user_id", 3], ["LIMIT", 1]]
+  ↳ app/models/book.rb:10:in `favorited_by?'
+  Rendered books/index.html.erb within layouts/application (Duration: 67.3ms | Allocations: 35291)
+  Rendered layout layouts/application.html.erb (Duration: 67.5ms | Allocations: 35366)
+Completed 500 Internal Server Error in 111ms (ActiveRecord: 4.6ms | Allocations: 51389)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"destroy", :book_id=>nil, :controller=>"favorites"}, missing required keys: [:book_id]):
+    27:                     <i class="fa-solid fa-heart text-danger"><%= @book.favorites.count %></i>
+    28:                   <% end %>
+    29:                 <% else %>
+    30:                   <%= link_to book_favorites_path(@book), method: :post do %>
+    31:                     <i class="fa-solid fa-heart text-primary"><%= @book.favorites.count %></i>
+    32:                   <% end %>
+    33:               <% end %>
+  
+app/views/books/index.html.erb:30
+app/views/books/index.html.erb:19
+Started GET "/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBJUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0a76858fb8aa012cf8b6e4169d0f7af6e51e604c/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RkhKbGMybDZaVjkwYjE5c2FXMXBkRnNIYVZWcFZRPT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--c1b5e4fc69f4a6f651f63453c8c37f847caa00a9/sample-author1.jpg" for 58.12.47.1 at 2022-06-08 17:09:10 +0000
+Started GET "/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBJUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0a76858fb8aa012cf8b6e4169d0f7af6e51e604c/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RkhKbGMybDZaVjkwYjE5c2FXMXBkRnNIYVdscGFRPT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--87c678e1283d84fe97140ab49e1fd1a6cd9a609a/sample-author1.jpg" for 58.12.47.1 at 2022-06-08 17:09:10 +0000
+Cannot render console from 58.12.47.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Cannot render console from 58.12.47.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by ActiveStorage::Representations::RedirectController#show as JPEG
+  Parameters: {"signed_blob_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBJUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0a76858fb8aa012cf8b6e4169d0f7af6e51e604c", "variation_key"=>"[FILTERED]", "filename"=>"sample-author1"}
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 28], ["LIMIT", 1]]
+  [1m[36mActiveStorage::VariantRecord Load (0.1ms)[0m  [1m[34mSELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = ? AND "active_storage_variant_records"."variation_digest" = ? LIMIT ?[0m  [["blob_id", 28], ["variation_digest", "58nLvjR5lLpeOdoWw8+s844W40I="], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 19], ["record_type", "ActiveStorage::VariantRecord"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 29], ["LIMIT", 1]]
+Processing by ActiveStorage::Representations::RedirectController#show as JPEG
+  Parameters: {"signed_blob_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBJUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0a76858fb8aa012cf8b6e4169d0f7af6e51e604c", "variation_key"=>"[FILTERED]", "filename"=>"sample-author1"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 28], ["LIMIT", 1]]
+  [1m[36mActiveStorage::VariantRecord Load (0.1ms)[0m  [1m[34mSELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = ? AND "active_storage_variant_records"."variation_digest" = ? LIMIT ?[0m  [["blob_id", 28], ["variation_digest", "0Lmu9T0kDFUJplmg7S9DaSDDTiw="], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 20], ["record_type", "ActiveStorage::VariantRecord"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 30], ["LIMIT", 1]]
+[36m  Disk Storage (0.6ms) [0m[34mGenerated URL for file at key: 3f5y3pbr64p8pq8w47eb9subz4wd (https://50fac2fad07249d9b7c3216f7719e3f4.vfs.cloud9.us-east-1.amazonaws.com/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhNMlkxZVROd1luSTJOSEE0Y0hFNGR6UTNaV0k1YzNWaWVqUjNaQVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpVDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5OaGJYQnNaUzFoZFhSb2IzSXhMbXB3WnlJN0lHWnBiR1Z1WVcxbEtqMVZWRVl0T0NjbmMyRnRjR3hsTFdGMWRHaHZjakV1YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRNkVYTmxjblpwWTJWZmJtRnRaVG9LYkc5allXdz0iLCJleHAiOiIyMDIyLTA2LTA4VDE3OjE0OjEwLjI5M1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--10aff18591e708f6cd34091c8b1e1aaddb1fc9f2/sample-author1.jpg)[0m
+[36m  Disk Storage (10.6ms) [0m[34mGenerated URL for file at key: qpdx5whbjdxdhsfnnx2cthdjhv2s (https://50fac2fad07249d9b7c3216f7719e3f4.vfs.cloud9.us-east-1.amazonaws.com/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhjWEJrZURWM2FHSnFaSGhrYUhObWJtNTRNbU4wYUdScWFIWXljd1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpVDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5OaGJYQnNaUzFoZFhSb2IzSXhMbXB3WnlJN0lHWnBiR1Z1WVcxbEtqMVZWRVl0T0NjbmMyRnRjR3hsTFdGMWRHaHZjakV1YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRNkVYTmxjblpwWTJWZmJtRnRaVG9LYkc5allXdz0iLCJleHAiOiIyMDIyLTA2LTA4VDE3OjE0OjEwLjI4NloiLCJwdXIiOiJibG9iX2tleSJ9fQ==--13fd95fae1f2ab4c162a65d4849f0ee991c4a760/sample-author1.jpg)[0m
+Redirected to https://50fac2fad07249d9b7c3216f7719e3f4.vfs.cloud9.us-east-1.amazonaws.com/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhNMlkxZVROd1luSTJOSEE0Y0hFNGR6UTNaV0k1YzNWaWVqUjNaQVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpVDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5OaGJYQnNaUzFoZFhSb2IzSXhMbXB3WnlJN0lHWnBiR1Z1WVcxbEtqMVZWRVl0T0NjbmMyRnRjR3hsTFdGMWRHaHZjakV1YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRNkVYTmxjblpwWTJWZmJtRnRaVG9LYkc5allXdz0iLCJleHAiOiIyMDIyLTA2LTA4VDE3OjE0OjEwLjI5M1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--10aff18591e708f6cd34091c8b1e1aaddb1fc9f2/sample-author1.jpg
+Redirected to https://50fac2fad07249d9b7c3216f7719e3f4.vfs.cloud9.us-east-1.amazonaws.com/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhjWEJrZURWM2FHSnFaSGhrYUhObWJtNTRNbU4wYUdScWFIWXljd1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpVDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5OaGJYQnNaUzFoZFhSb2IzSXhMbXB3WnlJN0lHWnBiR1Z1WVcxbEtqMVZWRVl0T0NjbmMyRnRjR3hsTFdGMWRHaHZjakV1YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRNkVYTmxjblpwWTJWZmJtRnRaVG9LYkc5allXdz0iLCJleHAiOiIyMDIyLTA2LTA4VDE3OjE0OjEwLjI4NloiLCJwdXIiOiJibG9iX2tleSJ9fQ==--13fd95fae1f2ab4c162a65d4849f0ee991c4a760/sample-author1.jpg
+Completed 302 Found in 16ms (ActiveRecord: 0.7ms | Allocations: 7796)
+
+
+Completed 302 Found in 28ms (ActiveRecord: 0.4ms | Allocations: 14183)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhjWEJrZURWM2FHSnFaSGhrYUhObWJtNTRNbU4wYUdScWFIWXljd1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpVDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5OaGJYQnNaUzFoZFhSb2IzSXhMbXB3WnlJN0lHWnBiR1Z1WVcxbEtqMVZWRVl0T0NjbmMyRnRjR3hsTFdGMWRHaHZjakV1YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRNkVYTmxjblpwWTJWZmJtRnRaVG9LYkc5allXdz0iLCJleHAiOiIyMDIyLTA2LTA4VDE3OjE0OjEwLjI4NloiLCJwdXIiOiJibG9iX2tleSJ9fQ==--13fd95fae1f2ab4c162a65d4849f0ee991c4a760/sample-author1.jpg" for 58.12.47.1 at 2022-06-08 17:09:10 +0000
+Cannot render console from 58.12.47.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"sample-author1"}
+Completed 200 OK in 1ms (ActiveRecord: 0.0ms | Allocations: 337)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhNMlkxZVROd1luSTJOSEE0Y0hFNGR6UTNaV0k1YzNWaWVqUjNaQVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpVDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5OaGJYQnNaUzFoZFhSb2IzSXhMbXB3WnlJN0lHWnBiR1Z1WVcxbEtqMVZWRVl0T0NjbmMyRnRjR3hsTFdGMWRHaHZjakV1YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRNkVYTmxjblpwWTJWZmJtRnRaVG9LYkc5allXdz0iLCJleHAiOiIyMDIyLTA2LTA4VDE3OjE0OjEwLjI5M1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--10aff18591e708f6cd34091c8b1e1aaddb1fc9f2/sample-author1.jpg" for 58.12.47.1 at 2022-06-08 17:09:10 +0000
+Cannot render console from 58.12.47.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"sample-author1"}
+Completed 200 OK in 0ms (ActiveRecord: 0.0ms | Allocations: 294)
+
+
+Started GET "/books" for 58.12.47.1 at 2022-06-08 17:11:01 +0000
+Cannot render console from 58.12.47.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by BooksController#index as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering books/index.html.erb within layouts/application
+  Rendered books/_info.html.erb (Duration: 1.6ms | Allocations: 1700)
+  Rendered books/index.html.erb within layouts/application (Duration: 3.0ms | Allocations: 2334)
+  Rendered layout layouts/application.html.erb (Duration: 3.4ms | Allocations: 2405)
+Completed 500 Internal Server Error in 26ms (ActiveRecord: 1.6ms | Allocations: 16714)
+
+
+  
+ActionView::Template::Error (undefined method `errors' for nil:NilClass):
+    1: <p class="text-success"><%= flash[:notice] %></p>
+    2: <% if @book.errors.any? %>
+    3:   <div id="error_explanation">
+    4:     <h3><%= @book.errors.count %> error prohibited this obj from being saved:</h3>
+    5:     <ul>
+  
+app/views/books/_info.html.erb:2
+app/views/books/index.html.erb:4
+Started GET "/books" for 58.12.47.1 at 2022-06-08 17:11:32 +0000
+Cannot render console from 58.12.47.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by BooksController#index as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering books/index.html.erb within layouts/application
+  Rendered books/_info.html.erb (Duration: 0.2ms | Allocations: 55)
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 3], ["record_type", "User"], ["name", "profile_image"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:16:in `get_profile_image'
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/models/user.rb:20:in `get_profile_image'
+  [1m[36mActiveStorage::VariantRecord Load (0.1ms)[0m  [1m[34mSELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = ? AND "active_storage_variant_records"."variation_digest" = ? LIMIT ?[0m  [["blob_id", 28], ["variation_digest", "58nLvjR5lLpeOdoWw8+s844W40I="], ["LIMIT", 1]]
+  ↳ app/models/user.rb:20:in `get_profile_image'
+  Rendered books/_side.html.erb (Duration: 36.2ms | Allocations: 22349)
+  [1m[36mBook Load (0.2ms)[0m  [1m[34mSELECT "books".* FROM "books"[0m
+  ↳ app/views/books/index.html.erb:19
+  [1m[36mActiveStorage::VariantRecord Load (0.1ms)[0m  [1m[34mSELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = ? AND "active_storage_variant_records"."variation_digest" = ? LIMIT ?[0m  [["blob_id", 28], ["variation_digest", "0Lmu9T0kDFUJplmg7S9DaSDDTiw="], ["LIMIT", 1]]
+  ↳ app/models/user.rb:20:in `get_profile_image'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/books/index.html.erb:21
+  [1m[36mFavorite Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "favorites" WHERE "favorites"."book_id" = ? AND "favorites"."user_id" = ? LIMIT ?[0m  [["book_id", 2], ["user_id", 3], ["LIMIT", 1]]
+  ↳ app/models/book.rb:10:in `favorited_by?'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "favorites" WHERE "favorites"."book_id" = ?[0m  [["book_id", 2]]
+  ↳ app/views/books/index.html.erb:27
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "book_comments" WHERE "book_comments"."book_id" = ?[0m  [["book_id", 2]]
+  ↳ app/views/books/index.html.erb:35
+  [1m[36mCACHE ActiveStorage::VariantRecord Load (0.0ms)[0m  [1m[34mSELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = ? AND "active_storage_variant_records"."variation_digest" = ? LIMIT ?[0m  [["blob_id", 28], ["variation_digest", "0Lmu9T0kDFUJplmg7S9DaSDDTiw="], ["LIMIT", 1]]
+  ↳ app/models/user.rb:20:in `get_profile_image'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/books/index.html.erb:21
+  [1m[36mFavorite Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "favorites" WHERE "favorites"."book_id" = ? AND "favorites"."user_id" = ? LIMIT ?[0m  [["book_id", 3], ["user_id", 3], ["LIMIT", 1]]
+  ↳ app/models/book.rb:10:in `favorited_by?'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "favorites" WHERE "favorites"."book_id" = ?[0m  [["book_id", 3]]
+  ↳ app/views/books/index.html.erb:27
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "book_comments" WHERE "book_comments"."book_id" = ?[0m  [["book_id", 3]]
+  ↳ app/views/books/index.html.erb:35
+  [1m[36mCACHE ActiveStorage::VariantRecord Load (0.0ms)[0m  [1m[34mSELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = ? AND "active_storage_variant_records"."variation_digest" = ? LIMIT ?[0m  [["blob_id", 28], ["variation_digest", "0Lmu9T0kDFUJplmg7S9DaSDDTiw="], ["LIMIT", 1]]
+  ↳ app/models/user.rb:20:in `get_profile_image'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/books/index.html.erb:21
+  [1m[36mFavorite Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "favorites" WHERE "favorites"."book_id" = ? AND "favorites"."user_id" = ? LIMIT ?[0m  [["book_id", 4], ["user_id", 3], ["LIMIT", 1]]
+  ↳ app/models/book.rb:10:in `favorited_by?'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "favorites" WHERE "favorites"."book_id" = ?[0m  [["book_id", 4]]
+  ↳ app/views/books/index.html.erb:27
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "book_comments" WHERE "book_comments"."book_id" = ?[0m  [["book_id", 4]]
+  ↳ app/views/books/index.html.erb:35
+  [1m[36mCACHE ActiveStorage::VariantRecord Load (0.0ms)[0m  [1m[34mSELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = ? AND "active_storage_variant_records"."variation_digest" = ? LIMIT ?[0m  [["blob_id", 28], ["variation_digest", "0Lmu9T0kDFUJplmg7S9DaSDDTiw="], ["LIMIT", 1]]
+  ↳ app/models/user.rb:20:in `get_profile_image'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/books/index.html.erb:21
+  [1m[36mFavorite Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "favorites" WHERE "favorites"."book_id" = ? AND "favorites"."user_id" = ? LIMIT ?[0m  [["book_id", 7], ["user_id", 3], ["LIMIT", 1]]
+  ↳ app/models/book.rb:10:in `favorited_by?'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "favorites" WHERE "favorites"."book_id" = ?[0m  [["book_id", 7]]
+  ↳ app/views/books/index.html.erb:31
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "book_comments" WHERE "book_comments"."book_id" = ?[0m  [["book_id", 7]]
+  ↳ app/views/books/index.html.erb:35
+  [1m[36mCACHE ActiveStorage::VariantRecord Load (0.0ms)[0m  [1m[34mSELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = ? AND "active_storage_variant_records"."variation_digest" = ? LIMIT ?[0m  [["blob_id", 28], ["variation_digest", "0Lmu9T0kDFUJplmg7S9DaSDDTiw="], ["LIMIT", 1]]
+  ↳ app/models/user.rb:20:in `get_profile_image'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/books/index.html.erb:21
+  [1m[36mFavorite Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "favorites" WHERE "favorites"."book_id" = ? AND "favorites"."user_id" = ? LIMIT ?[0m  [["book_id", 8], ["user_id", 3], ["LIMIT", 1]]
+  ↳ app/models/book.rb:10:in `favorited_by?'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "favorites" WHERE "favorites"."book_id" = ?[0m  [["book_id", 8]]
+  ↳ app/views/books/index.html.erb:31
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "book_comments" WHERE "book_comments"."book_id" = ?[0m  [["book_id", 8]]
+  ↳ app/views/books/index.html.erb:35
+  [1m[36mCACHE ActiveStorage::VariantRecord Load (0.0ms)[0m  [1m[34mSELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = ? AND "active_storage_variant_records"."variation_digest" = ? LIMIT ?[0m  [["blob_id", 28], ["variation_digest", "0Lmu9T0kDFUJplmg7S9DaSDDTiw="], ["LIMIT", 1]]
+  ↳ app/models/user.rb:20:in `get_profile_image'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/books/index.html.erb:21
+  [1m[36mFavorite Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "favorites" WHERE "favorites"."book_id" = ? AND "favorites"."user_id" = ? LIMIT ?[0m  [["book_id", 9], ["user_id", 3], ["LIMIT", 1]]
+  ↳ app/models/book.rb:10:in `favorited_by?'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "favorites" WHERE "favorites"."book_id" = ?[0m  [["book_id", 9]]
+  ↳ app/views/books/index.html.erb:31
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "book_comments" WHERE "book_comments"."book_id" = ?[0m  [["book_id", 9]]
+  ↳ app/views/books/index.html.erb:35
+  [1m[36mCACHE ActiveStorage::VariantRecord Load (0.0ms)[0m  [1m[34mSELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = ? AND "active_storage_variant_records"."variation_digest" = ? LIMIT ?[0m  [["blob_id", 28], ["variation_digest", "0Lmu9T0kDFUJplmg7S9DaSDDTiw="], ["LIMIT", 1]]
+  ↳ app/models/user.rb:20:in `get_profile_image'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/books/index.html.erb:21
+  [1m[36mFavorite Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "favorites" WHERE "favorites"."book_id" = ? AND "favorites"."user_id" = ? LIMIT ?[0m  [["book_id", 10], ["user_id", 3], ["LIMIT", 1]]
+  ↳ app/models/book.rb:10:in `favorited_by?'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "favorites" WHERE "favorites"."book_id" = ?[0m  [["book_id", 10]]
+  ↳ app/views/books/index.html.erb:31
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "book_comments" WHERE "book_comments"."book_id" = ?[0m  [["book_id", 10]]
+  ↳ app/views/books/index.html.erb:35
+  [1m[36mCACHE ActiveStorage::VariantRecord Load (0.0ms)[0m  [1m[34mSELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = ? AND "active_storage_variant_records"."variation_digest" = ? LIMIT ?[0m  [["blob_id", 28], ["variation_digest", "0Lmu9T0kDFUJplmg7S9DaSDDTiw="], ["LIMIT", 1]]
+  ↳ app/models/user.rb:20:in `get_profile_image'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/books/index.html.erb:21
+  [1m[36mFavorite Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "favorites" WHERE "favorites"."book_id" = ? AND "favorites"."user_id" = ? LIMIT ?[0m  [["book_id", 11], ["user_id", 3], ["LIMIT", 1]]
+  ↳ app/models/book.rb:10:in `favorited_by?'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "favorites" WHERE "favorites"."book_id" = ?[0m  [["book_id", 11]]
+  ↳ app/views/books/index.html.erb:31
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "book_comments" WHERE "book_comments"."book_id" = ?[0m  [["book_id", 11]]
+  ↳ app/views/books/index.html.erb:35
+  [1m[36mCACHE ActiveStorage::VariantRecord Load (0.0ms)[0m  [1m[34mSELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = ? AND "active_storage_variant_records"."variation_digest" = ? LIMIT ?[0m  [["blob_id", 28], ["variation_digest", "0Lmu9T0kDFUJplmg7S9DaSDDTiw="], ["LIMIT", 1]]
+  ↳ app/models/user.rb:20:in `get_profile_image'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/books/index.html.erb:21
+  [1m[36mFavorite Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "favorites" WHERE "favorites"."book_id" = ? AND "favorites"."user_id" = ? LIMIT ?[0m  [["book_id", 12], ["user_id", 3], ["LIMIT", 1]]
+  ↳ app/models/book.rb:10:in `favorited_by?'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "favorites" WHERE "favorites"."book_id" = ?[0m  [["book_id", 12]]
+  ↳ app/views/books/index.html.erb:31
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "book_comments" WHERE "book_comments"."book_id" = ?[0m  [["book_id", 12]]
+  ↳ app/views/books/index.html.erb:35
+  [1m[36mCACHE ActiveStorage::VariantRecord Load (0.0ms)[0m  [1m[34mSELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = ? AND "active_storage_variant_records"."variation_digest" = ? LIMIT ?[0m  [["blob_id", 28], ["variation_digest", "0Lmu9T0kDFUJplmg7S9DaSDDTiw="], ["LIMIT", 1]]
+  ↳ app/models/user.rb:20:in `get_profile_image'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/books/index.html.erb:21
+  [1m[36mFavorite Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "favorites" WHERE "favorites"."book_id" = ? AND "favorites"."user_id" = ? LIMIT ?[0m  [["book_id", 13], ["user_id", 3], ["LIMIT", 1]]
+  ↳ app/models/book.rb:10:in `favorited_by?'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "favorites" WHERE "favorites"."book_id" = ?[0m  [["book_id", 13]]
+  ↳ app/views/books/index.html.erb:31
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "book_comments" WHERE "book_comments"."book_id" = ?[0m  [["book_id", 13]]
+  ↳ app/views/books/index.html.erb:35
+  Rendered books/index.html.erb within layouts/application (Duration: 159.4ms | Allocations: 70783)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 163.5ms | Allocations: 73463)
+Completed 200 OK in 183ms (Views: 158.0ms | ActiveRecord: 7.6ms | Allocations: 86950)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhjWEJrZURWM2FHSnFaSGhrYUhObWJtNTRNbU4wYUdScWFIWXljd1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpVDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5OaGJYQnNaUzFoZFhSb2IzSXhMbXB3WnlJN0lHWnBiR1Z1WVcxbEtqMVZWRVl0T0NjbmMyRnRjR3hsTFdGMWRHaHZjakV1YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRNkVYTmxjblpwWTJWZmJtRnRaVG9LYkc5allXdz0iLCJleHAiOiIyMDIyLTA2LTA4VDE3OjE0OjEwLjI4NloiLCJwdXIiOiJibG9iX2tleSJ9fQ==--13fd95fae1f2ab4c162a65d4849f0ee991c4a760/sample-author1.jpg" for 58.12.47.1 at 2022-06-08 17:11:32 +0000
+Cannot render console from 58.12.47.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"sample-author1"}
+Completed 200 OK in 2ms (ActiveRecord: 0.0ms | Allocations: 401)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhNMlkxZVROd1luSTJOSEE0Y0hFNGR6UTNaV0k1YzNWaWVqUjNaQVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpVDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5OaGJYQnNaUzFoZFhSb2IzSXhMbXB3WnlJN0lHWnBiR1Z1WVcxbEtqMVZWRVl0T0NjbmMyRnRjR3hsTFdGMWRHaHZjakV1YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRNkVYTmxjblpwWTJWZmJtRnRaVG9LYkc5allXdz0iLCJleHAiOiIyMDIyLTA2LTA4VDE3OjE0OjEwLjI5M1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--10aff18591e708f6cd34091c8b1e1aaddb1fc9f2/sample-author1.jpg" for 58.12.47.1 at 2022-06-08 17:11:32 +0000
+Cannot render console from 58.12.47.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"sample-author1"}
+Completed 200 OK in 1ms (ActiveRecord: 0.0ms | Allocations: 291)
+
+
