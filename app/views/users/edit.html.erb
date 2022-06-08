@@ -1,0 +1,37 @@
+<div class="container" style="margin-top: 20px">
+  <div class="row">
+    
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <%= render 'users/info', user: @user %>
+      <h1>User info</h2>
+
+      
+      <%= form_with model: @user do |f| %>
+        <div class="field row mb-4">
+          <%= f.label :name, 'Name' %>
+          <%= f.text_field :name, autofocus: true ,class: "form-control name"%>
+        </div>
+        
+        
+        
+        
+        <div class="field row mb-4">
+          <%= f.label :profile_image, 'Image' %>
+          <!--下２つどっちか-->
+          <%= f.file_field :profile_image, accept: "image/*" %>
+        </div>
+
+    
+    
+        <div class="field row mb-4">
+          <%= f.label :introduction, 'Introduction' %>
+          <%= f.text_area :introduction, autofocus: true ,class: "form-control introduction"%>
+        </div>
+        <div class="submit row mb-3">
+          <%= f.submit 'Update User', class:'actions btn btn-success' %>
+        </div>
+      <% end %>
+      <div>
+    </div>
+  </div>
+</div>

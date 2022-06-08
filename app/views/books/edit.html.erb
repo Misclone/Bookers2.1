@@ -1,0 +1,28 @@
+<div class="container" style="margin-top: 20px">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <%= render 'books/info', user: @user %>
+      
+      <h1>Editing Book</h2>
+
+      
+      <%= form_with model: @book do |f| %>
+        <div class="field row mb-4">
+          <%= f.label :title, 'Title' %>
+          <%= f.text_field :title, autofocus: true ,class: "form-control book_title"%>
+        </div>
+        <div class="field row mb-4">
+          <%= f.label :body, 'Opinion' %>
+          <%= f.text_area :body, autofocus: true ,class: "form-control book_body"%>
+        </div>
+        <div class="submit row mb-3">
+          <%= f.submit 'Update Book', class:'actions btn btn-success' %>
+        </div>
+      <% end %>
+      <%= link_to 'Show', book_path(@book.id) %>
+      <span>|</span>
+      <%= link_to 'Back', books_path %>
+      <div>
+    </div>
+  </div>
+</div>
