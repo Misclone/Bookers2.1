@@ -4,9 +4,9 @@
       <%= render 'books/info', user: @user %>
       <%= render 'books/side', book: @new_book %>
     </div>
-  
+
     <div class="col-md-8 offset-md-1">
-  
+
       <table class="table">
         <h1>Book detail</h1>
         <tbody>
@@ -27,11 +27,11 @@
             <td>
               <% if @book.favorited_by?(current_user) %>
                   <%= link_to book_favorites_path(@book), method: :delete do %>
-                    <i class="fa-solid fa-heart text-danger"><%= @book.favorites.count %></i>
+                    <span class="text-danger"><i class="fas fa-heart"></i><%= @book.favorites.count %></span>
                   <% end %>
                 <% else %>
                   <%= link_to book_favorites_path(@book), method: :post do %>
-                    <i class="fa-solid fa-heart text-primary"><%= @book.favorites.count %></i>
+                    <span class="text-primary"><i class="fas fa-heart"></i><%= @book.favorites.count %></span>
                   <% end %>
               <% end %>
             </td>
@@ -39,7 +39,7 @@
           </tr>
         </tbody>
       </table>
-      
+
       <table class="table">
         <thead>
           <tr>
@@ -65,7 +65,7 @@
         </tbody>
       </table>
 
-      
+
       <div>
         <%= form_with model: [@book, @book_comment] do |f| %>
           <%= f.text_area :comment, rows: '5', autofocus: true ,class: "form-control", placeholder: "コメントをここに" %>
